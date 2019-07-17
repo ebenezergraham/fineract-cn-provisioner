@@ -81,11 +81,10 @@ public class ProvisionerInitializer {
       metaKeySpaceName = this.environment.getProperty(
           CassandraConnectorConstants.KEYSPACE_PROP,
           CassandraConnectorConstants.KEYSPACE_PROP_DEFAULT);
-
+ 
       this.initializeCassandra();
       this.initializeDatabase(PostgreSQLConstants.POSTGRESQL_DATABASE_NAME_DEFAULT);
       this.createTableTenants();
-      //this.initializeDatabase("playground");
     } catch (final Exception ex) {
       throw new IllegalStateException("Could not initialize service!", ex);
     }
@@ -202,7 +201,7 @@ public class ProvisionerInitializer {
 
     this.logger.info("Creating meta database {} ", postgresDbName);
     try (
-            final Connection connection = DataSourceUtils.createProvisionerConnection(this.environment, "postgres");
+            final Connection connection = DataSourceUtils.createProvisionerConnection(this.environment, PostgreSQLConstants.POSTGRESQL_DATABASE_NAME);
             final Statement testStatement = connection.createStatement();
             final Statement statement = connection.createStatement()
             ) {

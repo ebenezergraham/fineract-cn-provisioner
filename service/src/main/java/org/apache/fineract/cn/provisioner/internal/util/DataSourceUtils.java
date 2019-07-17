@@ -63,9 +63,8 @@ public class DataSourceUtils {
 
   public static Connection createProvisionerConnection(final Environment environment, String databaseName) {
     final DatabaseConnectionInfo databaseConnectionInfo = new DatabaseConnectionInfo();
-    databaseConnectionInfo.setDriverClass(environment.getProperty("postgresql.driverClass"));
-    databaseName = databaseName.equals(PostgreSQLConstants.POSTGRESQL_DATABASE_NAME_DEFAULT) ? PostgreSQLConstants.POSTGRESQL_DATABASE_NAME_DEFAULT :
-            (databaseName.equals("playground") ? "playground" : "postgres");
+      databaseConnectionInfo.setDriverClass(environment.getProperty("postgresql.driverClass"));
+    databaseName = databaseName.equals(PostgreSQLConstants.POSTGRESQL_DATABASE_NAME) ? PostgreSQLConstants.POSTGRESQL_DATABASE_NAME : PostgreSQLConstants.POSTGRESQL_DATABASE_NAME_DEFAULT;
     databaseConnectionInfo.setDatabaseName(databaseName);
     databaseConnectionInfo.setHost(environment.getProperty("postgresql.host"));
     databaseConnectionInfo.setPort(environment.getProperty("postgresql.port"));

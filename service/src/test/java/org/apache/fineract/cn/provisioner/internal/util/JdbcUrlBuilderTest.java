@@ -23,7 +23,7 @@ import org.junit.Test;
 
 public class JdbcUrlBuilderTest {
 
-  private final static String MARAIDB_JDBC_URL = "jdbc:mariadb://localhost:3306/comp_test";
+  private final static String POSTGRESQL_JDBC_URL = "jdbc:postgresql://localhost:5432/comp_test";
 
   public JdbcUrlBuilderTest() {
     super();
@@ -31,13 +31,13 @@ public class JdbcUrlBuilderTest {
 
   @Test
   public void shouldCreateMysqlUrl() {
-    final String mariaDbJdbcUrl = JdbcUrlBuilder
-        .create(JdbcUrlBuilder.DatabaseType.MARIADB)
+    final String postgresDbJdbcUrl = JdbcUrlBuilder
+        .create(JdbcUrlBuilder.DatabaseType.POSTGRESQL)
         .host("localhost")
-        .port("3306")
+        .port("5432")
         .instanceName("comp_test")
         .build();
 
-    Assert.assertEquals(MARAIDB_JDBC_URL, mariaDbJdbcUrl);
+    Assert.assertEquals(POSTGRESQL_JDBC_URL, postgresDbJdbcUrl);
   }
 }
